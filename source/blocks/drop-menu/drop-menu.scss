@@ -1,0 +1,61 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+
+/* шаблон вставки в html
+
+*/
+
+.drop-menu {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.drop-menu__list {
+  margin: 0;
+  padding: 0;
+  &--first {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &--second {
+    list-style-position: inside;
+    column-count: 3;
+    column-width: 150px;
+    column-gap: 0;
+    position: absolute;
+    //display: block;
+  }
+}
+
+.drop-menu__item {
+  position: relative;
+  box-sizing: border-box;
+  &:hover {
+    .drop-menu__list--second {
+      //display: block;
+    }
+  }
+  &--first {
+    border: 1px solid;
+    overflow: hidden;
+    width: 200px;
+    &:hover{
+      overflow: visible;
+    }
+  }
+  &--second {
+    border: 1px solid red;
+    padding: 5px;
+    width: 200px;
+  }
+}
+
+.drop-menu__link {
+  box-sizing: border-box;
+  display: inline-block;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
