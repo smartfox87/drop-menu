@@ -1,16 +1,22 @@
 @import "../../scss/variables.scss";
 @import "../../scss/mixins.scss";
 
-/* шаблон вставки в html 
-
-*/
-
 .control-menu {
-  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 20px;
+  font-size: 18px;
+  line-height: 24px;
   label {
     margin-bottom: 10px;
   }
+  input[type='text'] {
+    width: 50px;
+    padding: 0 5px;
+  }
+}
+
+.control-menu__text {
+  display: none;
 }

@@ -1,61 +1,106 @@
 @import "../../scss/variables.scss";
 @import "../../scss/mixins.scss";
 
-/* шаблон вставки в html
+$width__item--main: 250px;
 
-*/
-
-.drop-menu {
+.dr-menu {
+  padding: 10px;
   font-size: 18px;
   line-height: 24px;
 }
 
-.drop-menu__list {
+.dr-menu__list {
   margin: 0;
   padding: 0;
-  &--first {
-    list-style: none;
+  &--main {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
+    list-style: none;
   }
-  &--second {
-    list-style-position: inside;
-    column-count: 3;
-    column-width: 150px;
-    column-gap: 0;
+  &--drop {
     position: absolute;
-    //display: block;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    list-style: none inside;
+    background-repeat: no-repeat;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity, visibility 0.3s ease 0.15s;
+  }
+  &--third {
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+  &--vertical {
+    position: absolute;
+    list-style: none;
+    background-repeat: no-repeat;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity, visibility 0.3s ease 0.15s;
+  }
+  &--vertical-2nd {
+    left: -$width__item--main;
   }
 }
 
-.drop-menu__item {
-  position: relative;
+.dr-menu__item {
   box-sizing: border-box;
-  &:hover {
-    .drop-menu__list--second {
-      //display: block;
-    }
-  }
-  &--first {
-    border: 1px solid;
+  width: $width__item--main;
+  &--main {
+    position: relative;
+    display: inline-block;
     overflow: hidden;
-    width: 200px;
-    &:hover{
+    border: 1px solid gray;
+    &:hover {
       overflow: visible;
+      & > .dr-menu__list--drop,
+      & > .dr-menu__list--vertical {
+        background-repeat: repeat;
+        visibility: visible;
+        opacity: 1;
+      }
     }
   }
-  &--second {
-    border: 1px solid red;
-    padding: 5px;
+  &--drop {
     width: 200px;
+    padding: 5px;
+    border: 1px solid gray;
+  }
+  &--vertical {
+    position: relative;
+    overflow: visible;
+    border: 1px solid gray;
+    &:hover {
+      .dr-menu__list--drop {
+        background-repeat: repeat;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+  &--title {
+    font-weight: 700;
+    background-color: lightblue;
   }
 }
 
-.drop-menu__link {
+.dr-menu__link {
+  display: block;
   box-sizing: border-box;
-  display: inline-block;
+  padding: 10px;
+  overflow: hidden;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
+}
+
+.dr-menu__active-item {
+  position: absolute;
+  width: 100%;
+  height: 500px;
 }
